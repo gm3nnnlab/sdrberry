@@ -48,7 +48,14 @@ fun AboutScreen() {
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            "Bands, digital modes and talkgroups: a bundled, illustrative mock dataset " +
+            "DMR talkgroups: the BrandMeister network's public talkgroup list " +
+                "(api.brandmeister.network) — Ukraine's national, emergency and regional " +
+                "talkgroups plus the network-wide Local, World-wide and Europe groups. " +
+                "BrandMeister publishes names only, so no descriptions are shown.",
+            style = MaterialTheme.typography.bodyMedium,
+        )
+        Text(
+            "Bands and digital modes: a bundled, illustrative mock dataset " +
                 "(\"Mock Local Dataset\") seeded from local JSON assets — not a live feed.",
             style = MaterialTheme.typography.bodyMedium,
         )

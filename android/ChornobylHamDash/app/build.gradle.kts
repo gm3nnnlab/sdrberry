@@ -25,6 +25,8 @@ android {
         buildConfigField("String", "SWPC_BASE_URL", "\"https://services.swpc.noaa.gov/\"")
         // Live repeater list: HearHam.live, which permits use in apps.
         buildConfigField("String", "HEARHAM_BASE_URL", "\"https://hearham.com/\"")
+        // Live DMR talkgroup names: BrandMeister network API.
+        buildConfigField("String", "BRANDMEISTER_BASE_URL", "\"https://api.brandmeister.network/\"")
     }
 
     buildFeatures {

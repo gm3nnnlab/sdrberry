@@ -38,6 +38,10 @@ object NetworkModule {
         retrofit(BuildConfig.HEARHAM_BASE_URL).create(HearhamApiService::class.java)
     }
 
+    val brandmeisterApiService: BrandmeisterApiService by lazy {
+        retrofit(BuildConfig.BRANDMEISTER_BASE_URL).create(BrandmeisterApiService::class.java)
+    }
+
     private fun retrofit(baseUrl: String): Retrofit =
         Retrofit.Builder()
             .baseUrl(baseUrl)

@@ -87,7 +87,9 @@ fun DmrScreen(viewModel: DmrViewModel) {
                     Card(modifier = Modifier.fillMaxWidth()) {
                         Column(modifier = Modifier.padding(12.dp)) {
                             Text("${tg.tgId} — ${tg.name}", style = MaterialTheme.typography.titleMedium)
-                            Text(tg.description, style = MaterialTheme.typography.bodyMedium)
+                            if (tg.description.isNotBlank()) {
+                                Text(tg.description, style = MaterialTheme.typography.bodyMedium)
+                            }
                             Text(
                                 "Source: ${tg.source}",
                                 style = MaterialTheme.typography.labelSmall,
