@@ -27,8 +27,10 @@ fun BandsScreen(viewModel: BandsViewModel) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
-            "General reference only. Always check your own country's amateur-radio " +
-                "frequency allocation table before assuming any frequency is licensed for your use.",
+            "Source: IARU Region 1 band plans (iaru-r1.org) — HF effective 16 Oct 2020, " +
+                "VHF and UHF effective Dec 2020. Ukraine is in IARU Region 1.\n" +
+                "A band plan is not a licence: which of these frequencies you may use depends " +
+                "on your licence and Ukraine's national frequency allocation. Check them first.",
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.fillMaxWidth().padding(16.dp),

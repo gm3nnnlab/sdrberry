@@ -8,7 +8,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.chornobyl.hamdash.data.model.BandDto
 import org.chornobyl.hamdash.data.model.DigitalModeDto
 import org.chornobyl.hamdash.data.model.HearhamRepeaterDto
 import org.chornobyl.hamdash.data.model.PropagationDto
@@ -48,7 +47,6 @@ class RemoteDataSource(
         HearhamRepeaterMapper.map(entries, LocalDate.now(ZoneOffset.UTC))
     }
 
-    suspend fun fetchBands(): Result<List<BandDto>> = fetch { api.getBands() }
     suspend fun fetchDigitalModes(): Result<List<DigitalModeDto>> = fetch { api.getDigitalModes() }
     suspend fun fetchTalkgroups(): Result<List<TalkgroupDto>> =
         fetch { BrandmeisterTalkgroupMapper.map(brandmeister.getTalkgroups()) }

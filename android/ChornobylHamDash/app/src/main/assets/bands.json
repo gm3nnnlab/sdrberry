@@ -1,14 +1,110 @@
 [
-  {"id": "160m", "name": "160 Meters", "freqRangeLow": 1.8, "freqRangeHigh": 2.0, "typicalModes": "CW, SSB, FT8", "purpose": "Regional night-time HF, NVIS", "blurb": "The 'Top Band'. Strong ground-wave and night-time skywave propagation; popular for regional nets after sunset."},
-  {"id": "80m", "name": "80 Meters", "freqRangeLow": 3.5, "freqRangeHigh": 4.0, "typicalModes": "CW, SSB, FT8, RTTY", "purpose": "Regional HF, emergency nets", "blurb": "Reliable night-time regional coverage; a common choice for local and emergency traffic nets."},
-  {"id": "40m", "name": "40 Meters", "freqRangeLow": 7.0, "freqRangeHigh": 7.3, "typicalModes": "CW, SSB, FT8, JS8Call", "purpose": "Regional to continental HF", "blurb": "Workhorse band, day and night propagation; heavily used for digital modes like FT8."},
-  {"id": "30m", "name": "30 Meters", "freqRangeLow": 10.1, "freqRangeHigh": 10.15, "typicalModes": "CW, FT8, JS8Call", "purpose": "Narrowband digital/CW only", "blurb": "A WARC band reserved for CW and narrowband digital modes; no phone/SSB permitted."},
-  {"id": "20m", "name": "20 Meters", "freqRangeLow": 14.0, "freqRangeHigh": 14.35, "typicalModes": "CW, SSB, FT8, RTTY", "purpose": "DX / worldwide HF", "blurb": "The classic DX band; strong daytime long-distance propagation across continents."},
-  {"id": "17m", "name": "17 Meters", "freqRangeLow": 18.068, "freqRangeHigh": 18.168, "typicalModes": "CW, SSB, FT8", "purpose": "DX, less crowded HF", "blurb": "A WARC band with 20m-like propagation but much lighter traffic."},
-  {"id": "15m", "name": "15 Meters", "freqRangeLow": 21.0, "freqRangeHigh": 21.45, "typicalModes": "CW, SSB, FT8", "purpose": "DX during solar maximum", "blurb": "Excellent daytime DX during high solar activity; quieter during solar minimum."},
-  {"id": "12m", "name": "12 Meters", "freqRangeLow": 24.89, "freqRangeHigh": 24.99, "typicalModes": "CW, SSB, FT8", "purpose": "DX, solar-cycle dependent", "blurb": "A narrow WARC band that opens well during favorable solar conditions."},
-  {"id": "10m", "name": "10 Meters", "freqRangeLow": 28.0, "freqRangeHigh": 29.7, "typicalModes": "CW, SSB, FM, FT8", "purpose": "Sporadic-E, solar-max DX", "blurb": "Can be dead or wide open; famous for sporadic-E openings and repeaters during solar maximum."},
-  {"id": "6m", "name": "6 Meters", "freqRangeLow": 50.0, "freqRangeHigh": 54.0, "typicalModes": "CW, SSB, FM, FT8", "purpose": "'Magic Band', Sporadic-E", "blurb": "Blends HF and VHF behavior; famous unpredictable long-distance openings."},
-  {"id": "2m", "name": "2 Meters", "freqRangeLow": 144.0, "freqRangeHigh": 148.0, "typicalModes": "FM, SSB, DMR, D-STAR, C4FM, APRS", "purpose": "Local/regional VHF, repeaters", "blurb": "The primary local VHF band; most FM and digital voice repeaters live here."},
-  {"id": "70cm", "name": "70 Centimeters", "freqRangeLow": 420.0, "freqRangeHigh": 450.0, "typicalModes": "FM, DMR, D-STAR, C4FM", "purpose": "Local UHF, repeaters, digital voice", "blurb": "Dense UHF repeater coordination band, widely used for DMR and other digital voice systems."}
+  {
+    "id": "160m",
+    "name": "160 m",
+    "freqRangeLow": 1.81,
+    "freqRangeHigh": 2.0,
+    "typicalModes": "CW, digimodes, SSB (LSB)",
+    "purpose": "CW 1810–1838 kHz; narrow band 1838–1840; all modes 1840–2000 (digimodes 1840–1843)",
+    "blurb": "CW QRP centre of activity 1836 kHz. Lowest LSB voice dial setting 1843 kHz."
+  },
+  {
+    "id": "80m",
+    "name": "80 m",
+    "freqRangeLow": 3.5,
+    "freqRangeHigh": 3.8,
+    "typicalModes": "CW, digimodes, SSB (LSB)",
+    "purpose": "CW 3500–3570 kHz; narrow band / digimodes 3570–3600; all modes 3600–3800",
+    "blurb": "Centres of activity: CW QRS 3555, CW QRP 3560, digital voice 3630, SSB QRP 3690, image 3735 kHz. Region 1 emergency centre of activity 3760 kHz. Lowest LSB voice dial setting 3603 kHz."
+  },
+  {
+    "id": "40m",
+    "name": "40 m",
+    "freqRangeLow": 7.0,
+    "freqRangeHigh": 7.2,
+    "typicalModes": "CW, digimodes, SSB (LSB)",
+    "purpose": "CW 7000–7040 kHz; narrow band / digimodes 7040–7050; all modes 7050–7200 (digimodes 7050–7060)",
+    "blurb": "Centres of activity: CW QRP 7030, digital voice 7070, SSB QRP 7090, image 7165 kHz. Region 1 emergency centre 7110 kHz. Lowest LSB voice dial setting 7053 kHz."
+  },
+  {
+    "id": "30m",
+    "name": "30 m",
+    "freqRangeLow": 10.1,
+    "freqRangeHigh": 10.15,
+    "typicalModes": "CW, narrow-band digimodes",
+    "purpose": "CW 10100–10130 kHz; narrow band / digimodes 10130–10150 (max. 500 Hz bandwidth)",
+    "blurb": "CW QRP centre of activity 10116 kHz. No contests on this band. The amateur service has only secondary status here."
+  },
+  {
+    "id": "20m",
+    "name": "20 m",
+    "freqRangeLow": 14.0,
+    "freqRangeHigh": 14.35,
+    "typicalModes": "CW, digimodes, SSB (USB)",
+    "purpose": "CW 14000–14070 kHz; narrow band / digimodes 14070–14099; beacons only 14099–14101; all modes 14101–14350",
+    "blurb": "Centres of activity: QRS 14055, CW QRP 14060, digital voice 14130, image 14230, SSB QRP 14285 kHz; DX-peditions 14195 ±5 kHz. Global emergency centre of activity 14300 kHz."
+  },
+  {
+    "id": "17m",
+    "name": "17 m",
+    "freqRangeLow": 18.068,
+    "freqRangeHigh": 18.168,
+    "typicalModes": "CW, digimodes, SSB (USB)",
+    "purpose": "CW 18068–18095 kHz; narrow band / digimodes 18095–18109; beacons only 18109–18111; all modes 18111–18168",
+    "blurb": "Centres of activity: CW QRP 18086, SSB QRP 18130, digital voice 18150 kHz; emergency 18160 kHz. No contests on this band."
+  },
+  {
+    "id": "15m",
+    "name": "15 m",
+    "freqRangeLow": 21.0,
+    "freqRangeHigh": 21.45,
+    "typicalModes": "CW, digimodes, SSB (USB)",
+    "purpose": "CW 21000–21070 kHz; narrow band / digimodes 21070–21149 (21110–21120 all modes except SSB); beacons only 21149–21151; all modes 21151–21450",
+    "blurb": "Centres of activity: QRS 21055, QRP 21060, digital voice 21180, SSB QRP 21285, image 21340 kHz. Global emergency centre of activity 21360 kHz."
+  },
+  {
+    "id": "12m",
+    "name": "12 m",
+    "freqRangeLow": 24.89,
+    "freqRangeHigh": 24.99,
+    "typicalModes": "CW, digimodes, SSB (USB)",
+    "purpose": "CW 24890–24915 kHz; narrow band / digimodes 24915–24929; beacons only 24929–24931; all modes 24931–24990",
+    "blurb": "Centres of activity: CW QRP 24906, SSB QRP 24950, digital voice 24960 kHz. No contests on this band."
+  },
+  {
+    "id": "10m",
+    "name": "10 m",
+    "freqRangeLow": 28.0,
+    "freqRangeHigh": 29.7,
+    "typicalModes": "CW, digimodes, SSB (USB), FM",
+    "purpose": "CW 28000–28070 kHz; narrow band / digimodes 28070–28190; beacons 28190–28225; all modes 28225–29300; satellites 29300–29510; FM repeaters: input 29520–29590, output 29620–29700",
+    "blurb": "Centres of activity: QRS 28055, QRP 28060, digital voice 28330, SSB QRP 28360, image 28680 kHz. FM simplex 29100–29200 kHz (10 kHz channels); FM calling 29600 kHz."
+  },
+  {
+    "id": "6m",
+    "name": "6 m",
+    "freqRangeLow": 50.0,
+    "freqRangeHigh": 54.0,
+    "typicalModes": "CW, SSB, MGM / digimodes, FM, digital voice",
+    "purpose": "Beacons and CW 50.000–50.100 MHz; SSB and CW 50.100–50.300; narrow band / MGM 50.300–50.400; beacons only 50.400–50.500; all modes 50.500–54.000",
+    "blurb": "Centres of activity: CW 50.050, intercontinental 50.110, SSB 50.150, digital voice calling 50.630, FM calling 51.510 MHz. National allocations within 50–54 MHz vary."
+  },
+  {
+    "id": "2m",
+    "name": "2 m",
+    "freqRangeLow": 144.0,
+    "freqRangeHigh": 146.0,
+    "typicalModes": "CW, SSB, MGM, FM, digital voice, APRS",
+    "purpose": "Satellite downlink 144.000–144.025 MHz; CW / SSB / MGM 144.025–144.400; beacons only 144.400–144.490; all modes 144.500–144.794; digital communications 144.794–144.9625; FM/DV repeater input 144.975–145.194, output 145.575–145.7935; satellites only 145.806–146.000",
+    "blurb": "Centres of activity: CW calling 144.050, SSB 144.300, APRS 144.800, digital voice calling 145.375, FM calling 145.500 MHz."
+  },
+  {
+    "id": "70cm",
+    "name": "70 cm",
+    "freqRangeLow": 430.0,
+    "freqRangeHigh": 440.0,
+    "typicalModes": "CW, SSB, MGM, FM, digital voice, APRS, ATV",
+    "purpose": "All modes and repeaters 430.000–432.000 MHz (7.6 MHz-shift repeater input 431.050–431.825); CW / SSB / MGM 432.000–432.400; beacons only 432.400–432.490; FM / digital voice 432.500–434.000; ATV 434.000–434.594; satellites 435.000–438.000; all modes 438.000–440.000 (7.6 MHz-shift repeater output 438.650–439.425)",
+    "blurb": "Centres of activity: CW 432.050, SSB 432.200, APRS 432.500, digital voice calling 433.450, FM calling 433.500 MHz."
+  }
 ]
