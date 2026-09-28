@@ -91,13 +91,16 @@ class RadioDataRepositoryImpl(
                 anySucceeded = true
             }
         }
-        remote.fetchPropagation().onSuccess { dto ->
-            local.replacePropagation(dto.toEntity())
-            local.markSynced(SyncKeys.PROPAGATION, now)
-            anySucceeded = true
-        }
+        if (refreshPropagation()) anySucceeded = true
 
         return anySucceeded
+    }
+
+    override suspend fun refreshPropagation(): Boolean {
+        val dto = remote.fetchPropagation().getOrNull() ?: return false
+        local.replacePropagation(dto.toEntity())
+        local.markSynced(SyncKeys.PROPAGATION, System.currentTimeMillis())
+        return true
     }
 
     override suspend fun toggleFavorite(repeaterId: String) {
