@@ -25,6 +25,9 @@ interface RadioDataRepository {
 
     suspend fun ensureSeeded()
     suspend fun refresh(): Boolean
+
+    /** Fetches only the live propagation feeds; true when a new reading was stored. */
+    suspend fun refreshPropagation(): Boolean
     suspend fun toggleFavorite(repeaterId: String)
 
     /** Drops all cached radio data and sync times, then re-seeds from the bundled dataset. Favorites survive. */
