@@ -14,6 +14,7 @@ import kotlin.math.roundToInt
 /**
  * Turns the raw NOAA SWPC feeds into one propagation snapshot. A null feed means that
  * request failed; its fields stay null so the UI shows NO DATA instead of a guess.
+ * Returns null when no feed holds a usable value, so the last stored reading is kept.
  */
 object SwpcPropagationMapper {
     const val SOURCE = "NOAA Space Weather Prediction Center (services.swpc.noaa.gov)"
@@ -28,21 +29,24 @@ object SwpcPropagationMapper {
         flares: List<SwpcFlareDto>?,
         now: Instant,
     ): PropagationDto? {
-        if (flux == null && kp == null && flares == null) return null
-
         val latestFlux = flux.orEmpty()
             .mapNotNull { dto -> dto.flux?.takeIf { it > 0 }?.let { value -> parseUtc(dto.timeTag)?.let { it to value } } }
             .maxByOrNull { it.first }
         val latestKp = kp.orEmpty()
             .mapNotNull { dto -> dto.kp?.takeIf { it >= 0 }?.let { value -> parseUtc(dto.timeTag)?.let { it to value } } }
             .maxByOrNull { it.first }
+        // An empty flare list is treated as missing data, not as proof that no flares occurred.
+        val flareEvents = flares?.takeIf { it.isNotEmpty() }
+
+        if (latestFlux == null && latestKp == null && flareEvents == null) return null
+
         val kIndex = latestKp?.second?.roundToInt()
 
         return PropagationDto(
             solarFluxIndex = latestFlux?.second?.roundToInt(),
             kIndex = kIndex,
             aIndex = kp?.let { dailyAp(it, now) },
-            solarFlares = flares?.let { describeFlares(it, now) },
+            solarFlares = flareEvents?.let { describeFlares(it, now) },
             geomagneticState = kIndex?.let(::geomagneticState),
             source = SOURCE,
             lastUpdated = listOfNotNull(latestFlux?.first, latestKp?.first).maxOrNull()?.let(TIMESTAMP::format),

@@ -105,6 +105,23 @@ class SwpcPropagationMapperTest {
     }
 
     @Test
+    fun `empty feeds count as failed so the stored reading is kept`() {
+        assertNull(map(flux = emptyList(), kp = emptyList(), flares = emptyList()))
+    }
+
+    @Test
+    fun `feeds holding only missing values count as empty`() {
+        assertNull(map(kp = listOf(SwpcKpDto("2026-09-28T12:00:00", -1.0, -1))))
+    }
+
+    @Test
+    fun `an empty flare feed shows no data rather than claiming no flares`() {
+        val result = map(flux = listOf(SwpcFluxDto(97.0, "2026-09-27T20:00:00")), flares = emptyList())
+        assertEquals(97, result?.solarFluxIndex)
+        assertNull(result?.solarFlares)
+    }
+
+    @Test
     fun `last updated is the newest observation time`() {
         val result = map(
             flux = listOf(SwpcFluxDto(97.0, "2026-09-27T20:00:00")),
