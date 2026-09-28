@@ -24,7 +24,12 @@ interface RadioDataRepository {
     fun observeLastSync(): Flow<Long?>
 
     suspend fun ensureSeeded()
-    suspend fun refresh(): Boolean
+    /**
+     * Refreshes everything from the remote sources. The repeater list is a ~9.5 MB
+     * worldwide download, so it is fetched only when [allowLargeDownloads] is true and
+     * at most once a week; the bundled snapshot covers everyone else.
+     */
+    suspend fun refresh(allowLargeDownloads: Boolean): Boolean
 
     /** Fetches only the live propagation feeds; true when a new reading was stored. */
     suspend fun refreshPropagation(): Boolean

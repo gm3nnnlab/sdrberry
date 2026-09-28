@@ -11,7 +11,7 @@ import kotlinx.serialization.json.Json as KxJson
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 
 object NetworkModule {
-    private val json: KxJson by lazy {
+    val json: KxJson by lazy {
         Json {
             ignoreUnknownKeys = true
             isLenient = true
@@ -32,6 +32,10 @@ object NetworkModule {
 
     val swpcApiService: SwpcApiService by lazy {
         retrofit(BuildConfig.SWPC_BASE_URL).create(SwpcApiService::class.java)
+    }
+
+    val hearhamApiService: HearhamApiService by lazy {
+        retrofit(BuildConfig.HEARHAM_BASE_URL).create(HearhamApiService::class.java)
     }
 
     private fun retrofit(baseUrl: String): Retrofit =

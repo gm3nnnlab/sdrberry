@@ -8,11 +8,10 @@ import org.chornobyl.hamdash.data.model.RepeaterDto
 import org.chornobyl.hamdash.data.model.TalkgroupDto
 
 /**
- * Reads the bundled mock JSON in `assets/` — the offline seed data used the very first
- * time the app runs (before any successful network sync) and whenever the network is
- * unavailable for a fresh install. This is a stand-in "local publisher" data source, kept
- * behind the same [org.chornobyl.hamdash.data.repository.RadioDataRepository] abstraction
- * as the network source.
+ * Reads the bundled JSON in `assets/` — the offline seed data used the very first time
+ * the app runs (before any successful network sync) and whenever the network is
+ * unavailable for a fresh install. `repeaters.json` is a dated HearHam snapshot produced
+ * by [HearhamRepeaterMapper]; the other files are illustrative mock data.
  */
 class AssetDataSource(private val context: Context) {
     private val json = Json { ignoreUnknownKeys = true; isLenient = true }

@@ -22,6 +22,15 @@ class ConnectivityObserver(private val context: Context) {
         return allowMobileData || !capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
     }
 
+    /** True on an unmetered connection such as Wi-Fi, where large downloads are acceptable. */
+    fun isUnmetered(): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+            capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
+    }
+
     fun observe(): Flow<Boolean> = callbackFlow {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

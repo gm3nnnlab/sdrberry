@@ -20,7 +20,12 @@ import org.chornobyl.hamdash.settings.SettingsManager
 class AppContainer(context: Context) {
     private val database = HamDashDatabase.getInstance(context)
     private val localDataSource = LocalDataSource(database)
-    private val remoteDataSource = RemoteDataSource(NetworkModule.radioApiService, NetworkModule.swpcApiService)
+    private val remoteDataSource = RemoteDataSource(
+        NetworkModule.radioApiService,
+        NetworkModule.swpcApiService,
+        NetworkModule.hearhamApiService,
+        NetworkModule.json,
+    )
     private val assetDataSource = AssetDataSource(context)
 
     val radioDataRepository: RadioDataRepository =

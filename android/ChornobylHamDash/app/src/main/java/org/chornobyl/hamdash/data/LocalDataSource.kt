@@ -54,6 +54,8 @@ class LocalDataSource(private val db: HamDashDatabase) {
     suspend fun setFavorite(repeater: RepeaterEntity, favorite: Boolean) =
         db.repeaterDao().update(repeater.copy(isFavorite = favorite))
 
+    suspend fun lastSynced(key: String): Long? = db.syncMetadataDao().get(key)?.lastSyncEpochMillis
+
     suspend fun markSynced(key: String, epochMillis: Long) =
         db.syncMetadataDao().upsert(SyncMetadataEntity(key, epochMillis))
 
