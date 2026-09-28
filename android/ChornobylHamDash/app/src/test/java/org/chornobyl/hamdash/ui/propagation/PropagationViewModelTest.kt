@@ -42,7 +42,7 @@ class PropagationViewModelTest {
         override fun observePropagation(): Flow<PropagationEntity?> = emptyFlow()
         override fun observeLastSync(): Flow<Long?> = emptyFlow()
         override suspend fun ensureSeeded() = Unit
-        override suspend fun refresh(): Boolean = false
+        override suspend fun refresh(allowLargeDownloads: Boolean): Boolean = false
         override suspend fun toggleFavorite(repeaterId: String) = Unit
         override suspend fun clearCache() = Unit
     }

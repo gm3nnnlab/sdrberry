@@ -40,7 +40,9 @@ class SyncScheduler(
                     val wait = lastAttemptMillis + policy.intervalMillis - System.currentTimeMillis()
                     if (wait > 0) delay(wait)
                     lastAttemptMillis = System.currentTimeMillis()
-                    if (connectivity.isSyncAllowed(policy.useMobileData)) repository.refresh()
+                    if (connectivity.isSyncAllowed(policy.useMobileData)) {
+                        repository.refresh(allowLargeDownloads = connectivity.isUnmetered())
+                    }
                 }
             }
     }

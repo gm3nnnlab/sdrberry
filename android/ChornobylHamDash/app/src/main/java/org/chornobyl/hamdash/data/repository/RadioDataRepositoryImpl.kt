@@ -58,16 +58,22 @@ class RadioDataRepositoryImpl(
      * On failure or an empty/invalid payload, leave the existing local data untouched
      * and report that this refresh did not update anything.
      */
-    override suspend fun refresh(): Boolean {
+    override suspend fun refresh(allowLargeDownloads: Boolean): Boolean {
         var anySucceeded = false
         val now = System.currentTimeMillis()
 
-        remote.fetchRepeaters().onSuccess { dtos ->
-            if (dtos.isNotEmpty()) {
-                val favorites = dtos.associate { it.id to (local.getRepeater(it.id)?.isFavorite ?: false) }
-                local.replaceRepeaters(dtos.map { it.toEntity(favorites[it.id] ?: false) })
+        val repeatersSyncedAt = local.lastSynced(SyncKeys.REPEATERS)
+        val repeatersDue = repeatersSyncedAt == null || now - repeatersSyncedAt >= REPEATER_SYNC_INTERVAL_MILLIS
+        if (allowLargeDownloads && repeatersDue) {
+            remote.fetchRepeaters().onSuccess { dtos ->
+                if (dtos.isNotEmpty()) {
+                    val favorites = dtos.associate { it.id to (local.getRepeater(it.id)?.isFavorite ?: false) }
+                    local.replaceRepeaters(dtos.map { it.toEntity(favorites[it.id] ?: false) })
+                    anySucceeded = true
+                }
+                // Recorded even when nothing nearby survived filtering, so the full
+                // worldwide list is not downloaded again until the next interval.
                 local.markSynced(SyncKeys.REPEATERS, now)
-                anySucceeded = true
             }
         }
         remote.fetchBands().onSuccess { dtos ->
@@ -113,5 +119,9 @@ class RadioDataRepositoryImpl(
         local.clearAll()
         ensureSeeded()
         if (favoriteIds.isNotEmpty()) local.markFavorites(favoriteIds)
+    }
+
+    private companion object {
+        const val REPEATER_SYNC_INTERVAL_MILLIS = 7L * 24 * 60 * 60 * 1000
     }
 }

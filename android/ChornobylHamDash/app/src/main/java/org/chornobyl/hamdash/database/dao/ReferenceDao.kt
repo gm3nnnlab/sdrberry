@@ -80,6 +80,9 @@ interface SyncMetadataDao {
     @Query("SELECT * FROM sync_metadata WHERE key = :key")
     fun observe(key: String): Flow<SyncMetadataEntity?>
 
+    @Query("SELECT * FROM sync_metadata WHERE key = :key")
+    suspend fun get(key: String): SyncMetadataEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(entity: SyncMetadataEntity)
 

@@ -39,10 +39,17 @@ fun AboutScreen() {
 
         Text("DATA SOURCES", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
         Text(
-            "Repeaters, bands, digital modes and talkgroups: a bundled, illustrative mock " +
-                "dataset (\"Mock Local Dataset\") seeded from local JSON assets — not a live feed. " +
-                "The app is wired to fetch them from a remote source through RadioDataRepository, " +
-                "so a real, attributed public amateur-radio data provider can be plugged in later.",
+            "Repeaters: the public HearHam.live repeater list (hearham.com), which permits use " +
+                "in apps. Only repeaters marked operational within 300 km of Chornobyl are shown, " +
+                "and entries whose frequencies fall outside the amateur bands are dropped. The app " +
+                "ships with a dated snapshot and refreshes it at most weekly on Wi-Fi, because the " +
+                "worldwide list is a ~9.5 MB download. Listings are community-maintained: check " +
+                "before transmitting.",
+            style = MaterialTheme.typography.bodyMedium,
+        )
+        Text(
+            "Bands, digital modes and talkgroups: a bundled, illustrative mock dataset " +
+                "(\"Mock Local Dataset\") seeded from local JSON assets — not a live feed.",
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
