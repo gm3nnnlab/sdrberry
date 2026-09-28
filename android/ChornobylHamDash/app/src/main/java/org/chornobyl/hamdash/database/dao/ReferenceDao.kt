@@ -21,6 +21,9 @@ interface BandDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(bands: List<BandEntity>)
+
+    @Query("DELETE FROM bands")
+    suspend fun clear()
 }
 
 @Dao
@@ -33,6 +36,9 @@ interface DigitalModeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(modes: List<DigitalModeEntity>)
+
+    @Query("DELETE FROM digital_modes")
+    suspend fun clear()
 }
 
 @Dao
@@ -52,6 +58,9 @@ interface TalkgroupDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(talkgroups: List<TalkgroupEntity>)
+
+    @Query("DELETE FROM talkgroups")
+    suspend fun clear()
 }
 
 @Dao
@@ -61,6 +70,9 @@ interface PropagationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(propagation: PropagationEntity)
+
+    @Query("DELETE FROM propagation")
+    suspend fun clear()
 }
 
 @Dao
@@ -70,4 +82,7 @@ interface SyncMetadataDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(entity: SyncMetadataEntity)
+
+    @Query("DELETE FROM sync_metadata")
+    suspend fun clear()
 }

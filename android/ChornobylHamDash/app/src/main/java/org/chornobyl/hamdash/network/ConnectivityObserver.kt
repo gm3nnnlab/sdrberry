@@ -12,6 +12,16 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 
 /** Drives the ONLINE/OFFLINE indicator via ConnectivityManager network callbacks. */
 class ConnectivityObserver(private val context: Context) {
+
+    /** True when there is internet access, and the active network is not cellular unless [allowMobileData]. */
+    fun isSyncAllowed(allowMobileData: Boolean): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        if (!capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) return false
+        return allowMobileData || !capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+    }
+
     fun observe(): Flow<Boolean> = callbackFlow {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

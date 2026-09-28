@@ -4,6 +4,7 @@ import android.content.Context
 import org.chornobyl.hamdash.data.AssetDataSource
 import org.chornobyl.hamdash.data.LocalDataSource
 import org.chornobyl.hamdash.data.RemoteDataSource
+import org.chornobyl.hamdash.data.SyncScheduler
 import org.chornobyl.hamdash.data.repository.RadioDataRepository
 import org.chornobyl.hamdash.data.repository.RadioDataRepositoryImpl
 import org.chornobyl.hamdash.database.HamDashDatabase
@@ -28,4 +29,5 @@ class AppContainer(context: Context) {
     val settingsManager = SettingsManager(context)
     val locationManagerWrapper = LocationManagerWrapper(context)
     val connectivityObserver = ConnectivityObserver(context)
+    val syncScheduler = SyncScheduler(radioDataRepository, settingsManager, connectivityObserver)
 }

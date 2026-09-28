@@ -25,6 +25,7 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
     fun setUseMobileData(v: Boolean) = viewModelScope.launch { container.settingsManager.setUseMobileData(v) }
 
     fun clearCache() = viewModelScope.launch {
+        container.radioDataRepository.clearCache()
         container.settingsManager.clearAll()
     }
 }

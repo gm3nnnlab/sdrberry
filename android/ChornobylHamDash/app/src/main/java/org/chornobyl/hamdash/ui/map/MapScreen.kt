@@ -64,7 +64,7 @@ fun MapScreen(viewModel: MapViewModel) {
         ActivityResultContracts.RequestMultiplePermissions(),
     ) { results ->
         if (results.values.any { it }) {
-            viewModel.refreshMyLocation()
+            viewModel.refreshMyLocation(centerMap = true)
         }
     }
 
@@ -75,6 +75,12 @@ fun MapScreen(viewModel: MapViewModel) {
         mapView.controller.setZoom(9.0)
         mapView.controller.setCenter(GeoPoint(CHORNOBYL_LAT, CHORNOBYL_LON))
         onDispose { mapView.onDetach() }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.centerOn.collect { loc ->
+            mapView.controller.animateTo(GeoPoint(loc.latitude, loc.longitude))
+        }
     }
 
     LaunchedEffect(state.repeaters, state.myLocation) {
@@ -127,8 +133,7 @@ fun MapScreen(viewModel: MapViewModel) {
         FloatingActionButton(
             onClick = {
                 if (viewModel.hasLocationPermission()) {
-                    viewModel.refreshMyLocation()
-                    state.myLocation?.let { mapView.controller.animateTo(GeoPoint(it.latitude, it.longitude)) }
+                    viewModel.refreshMyLocation(centerMap = true)
                 } else {
                     permissionLauncher.launch(LOCATION_PERMISSIONS)
                 }

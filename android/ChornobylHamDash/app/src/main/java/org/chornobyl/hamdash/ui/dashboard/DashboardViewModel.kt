@@ -16,6 +16,7 @@ import org.chornobyl.hamdash.database.entity.RepeaterEntity
 import org.chornobyl.hamdash.domain.RepeaterMode
 import org.chornobyl.hamdash.domain.SunCalculator
 import org.chornobyl.hamdash.domain.SunTimes
+import org.chornobyl.hamdash.settings.AppSettings
 import java.time.LocalDate
 import java.time.ZoneId
 
@@ -54,6 +55,10 @@ class DashboardViewModel(private val container: AppContainer) : ViewModel() {
             lastSyncEpochMillis = lastSync,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), DashboardUiState())
+
+    /** Null until DataStore has loaded, so the screen never acts on defaults the user has changed. */
+    val settings: StateFlow<AppSettings?> = container.settingsManager.settingsFlow
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
     private val _sunTimes = MutableStateFlow<SunTimes?>(null)
     val sunTimes: StateFlow<SunTimes?> = _sunTimes

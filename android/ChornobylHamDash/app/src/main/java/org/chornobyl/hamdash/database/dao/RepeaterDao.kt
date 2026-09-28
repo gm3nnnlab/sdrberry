@@ -27,4 +27,10 @@ interface RepeaterDao {
 
     @Query("DELETE FROM repeaters")
     suspend fun clear()
+
+    @Query("SELECT id FROM repeaters WHERE isFavorite = 1")
+    suspend fun favoriteIds(): List<String>
+
+    @Query("UPDATE repeaters SET isFavorite = 1 WHERE id IN (:ids)")
+    suspend fun markFavorites(ids: List<String>)
 }

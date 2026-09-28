@@ -26,4 +26,7 @@ interface RadioDataRepository {
     suspend fun ensureSeeded()
     suspend fun refresh(): Boolean
     suspend fun toggleFavorite(repeaterId: String)
+
+    /** Drops all cached radio data and sync times, then re-seeds from the bundled dataset. Favorites survive. */
+    suspend fun clearCache()
 }

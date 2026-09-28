@@ -105,4 +105,11 @@ class RadioDataRepositoryImpl(
         val repeater = local.getRepeater(repeaterId) ?: return
         local.setFavorite(repeater, !repeater.isFavorite)
     }
+
+    override suspend fun clearCache() {
+        val favoriteIds = local.favoriteRepeaterIds()
+        local.clearAll()
+        ensureSeeded()
+        if (favoriteIds.isNotEmpty()) local.markFavorites(favoriteIds)
+    }
 }

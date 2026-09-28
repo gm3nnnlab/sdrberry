@@ -2,7 +2,9 @@ package org.chornobyl.hamdash.ui.map
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -51,9 +53,16 @@ class MapViewModel(private val container: AppContainer) : ViewModel() {
 
     fun hasLocationPermission(): Boolean = container.locationManagerWrapper.hasLocationPermission()
 
-    fun refreshMyLocation() {
+    private val _centerOn = MutableSharedFlow<SimpleLocation>(extraBufferCapacity = 1)
+
+    /** One-off requests to move the map to a freshly acquired position. */
+    val centerOn: SharedFlow<SimpleLocation> = _centerOn
+
+    fun refreshMyLocation(centerMap: Boolean = false) {
         viewModelScope.launch {
-            _myLocation.value = container.locationManagerWrapper.getCurrentLocation()
+            val location = container.locationManagerWrapper.getCurrentLocation()
+            _myLocation.value = location
+            if (centerMap && location != null) _centerOn.tryEmit(location)
         }
     }
 }

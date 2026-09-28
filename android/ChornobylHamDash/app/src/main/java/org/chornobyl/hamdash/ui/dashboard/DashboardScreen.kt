@@ -39,8 +39,12 @@ fun DashboardScreen(
     val state by viewModel.uiState.collectAsState()
     val sunTimes by viewModel.sunTimes.collectAsState()
     val hasLocation by viewModel.hasLocation.collectAsState()
+    val settings by viewModel.settings.collectAsState()
+    val showUtc = settings?.showUtcTime ?: true
+    val showLocal = settings?.showLocalTime ?: true
+    val showGps = settings?.showGpsOnDashboard
 
-    LaunchedEffect(Unit) { viewModel.loadSunTimes() }
+    LaunchedEffect(showGps) { if (showGps == true) viewModel.loadSunTimes() }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -75,18 +79,31 @@ fun DashboardScreen(
 
         item {
             DashCard(title = "CLOCK") {
+                if (showUtc) {
+                    Text(
+                        text = "UTC  " + formatUtcClock(now),
+                        style = MaterialTheme.typography.displayLarge.copy(fontWeight = FontWeight.Bold),
+                        color = HamGreen,
+                    )
+                }
+                if (showLocal) {
+                    Text(
+                        text = "LOCAL " + formatLocalClock(now),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = HamAmber,
+                    )
+                }
+                if (!showUtc && !showLocal) {
+                    Text(
+                        text = "Clocks hidden in Settings",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
                 Text(
-                    text = "UTC  " + formatUtcClock(now),
-                    style = MaterialTheme.typography.displayLarge.copy(fontWeight = FontWeight.Bold),
-                    color = HamGreen,
-                )
-                Text(
-                    text = "LOCAL " + formatLocalClock(now),
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = HamAmber,
-                )
-                Text(
-                    text = if (hasLocation && sunTimes != null) {
+                    text = if (showGps == false) {
+                        "Sunrise/Sunset: GPS display is off in Settings"
+                    } else if (hasLocation && sunTimes != null) {
                         val sr = sunTimes?.sunriseUtc?.let { formatUtcClock(it.toInstant().toEpochMilli()) } ?: "NO DATA"
                         val ss = sunTimes?.sunsetUtc?.let { formatUtcClock(it.toInstant().toEpochMilli()) } ?: "NO DATA"
                         val len = sunTimes?.dayLengthMinutes?.let { "${it / 60}h ${it % 60}m" } ?: "NO DATA"

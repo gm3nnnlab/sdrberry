@@ -1,5 +1,6 @@
 package org.chornobyl.hamdash.data
 
+import androidx.room.withTransaction
 import kotlinx.coroutines.flow.Flow
 import org.chornobyl.hamdash.database.HamDashDatabase
 import org.chornobyl.hamdash.database.entity.BandEntity
@@ -24,11 +25,30 @@ class LocalDataSource(private val db: HamDashDatabase) {
     suspend fun digitalModeCount(): Int = db.digitalModeDao().count()
     suspend fun talkgroupCount(): Int = db.talkgroupDao().count()
 
-    suspend fun replaceRepeaters(repeaters: List<RepeaterEntity>) = db.repeaterDao().insertAll(repeaters)
-    suspend fun replaceBands(bands: List<BandEntity>) = db.bandDao().insertAll(bands)
-    suspend fun replaceDigitalModes(modes: List<DigitalModeEntity>) = db.digitalModeDao().insertAll(modes)
-    suspend fun replaceTalkgroups(talkgroups: List<TalkgroupEntity>) = db.talkgroupDao().insertAll(talkgroups)
+    suspend fun replaceRepeaters(repeaters: List<RepeaterEntity>) = db.withTransaction {
+        db.repeaterDao().clear()
+        db.repeaterDao().insertAll(repeaters)
+    }
+
+    suspend fun replaceBands(bands: List<BandEntity>) = db.withTransaction {
+        db.bandDao().clear()
+        db.bandDao().insertAll(bands)
+    }
+
+    suspend fun replaceDigitalModes(modes: List<DigitalModeEntity>) = db.withTransaction {
+        db.digitalModeDao().clear()
+        db.digitalModeDao().insertAll(modes)
+    }
+
+    suspend fun replaceTalkgroups(talkgroups: List<TalkgroupEntity>) = db.withTransaction {
+        db.talkgroupDao().clear()
+        db.talkgroupDao().insertAll(talkgroups)
+    }
+
     suspend fun replacePropagation(propagation: PropagationEntity) = db.propagationDao().upsert(propagation)
+
+    suspend fun favoriteRepeaterIds(): List<String> = db.repeaterDao().favoriteIds()
+    suspend fun markFavorites(ids: List<String>) = db.repeaterDao().markFavorites(ids)
 
     suspend fun getRepeater(id: String): RepeaterEntity? = db.repeaterDao().getById(id)
     suspend fun setFavorite(repeater: RepeaterEntity, favorite: Boolean) =
@@ -37,7 +57,12 @@ class LocalDataSource(private val db: HamDashDatabase) {
     suspend fun markSynced(key: String, epochMillis: Long) =
         db.syncMetadataDao().upsert(SyncMetadataEntity(key, epochMillis))
 
-    suspend fun clearAll() {
+    suspend fun clearAll() = db.withTransaction {
         db.repeaterDao().clear()
+        db.bandDao().clear()
+        db.digitalModeDao().clear()
+        db.talkgroupDao().clear()
+        db.propagationDao().clear()
+        db.syncMetadataDao().clear()
     }
 }
