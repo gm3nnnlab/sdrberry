@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "solarFluxIndex": 128,
+  "kIndex": 2,
+  "aIndex": 6,
+  "solarFlares": null,
+  "geomagneticState": "Quiet",
+  "source": "Mock Local Dataset (illustrative, not a live feed)",
+  "lastUpdated": "2026-09-27"
+}
