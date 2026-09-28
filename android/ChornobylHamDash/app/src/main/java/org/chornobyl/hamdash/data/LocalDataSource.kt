@@ -21,7 +21,6 @@ class LocalDataSource(private val db: HamDashDatabase) {
     fun observeSync(key: String): Flow<SyncMetadataEntity?> = db.syncMetadataDao().observe(key)
 
     suspend fun repeaterCount(): Int = db.repeaterDao().count()
-    suspend fun digitalModeCount(): Int = db.digitalModeDao().count()
     suspend fun talkgroupCount(): Int = db.talkgroupDao().count()
 
     suspend fun replaceRepeaters(repeaters: List<RepeaterEntity>) = db.withTransaction {

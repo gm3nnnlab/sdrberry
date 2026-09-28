@@ -10,8 +10,10 @@ import org.chornobyl.hamdash.data.model.TalkgroupDto
 /**
  * Reads the bundled JSON in `assets/` — the offline seed data used the very first time
  * the app runs (before any successful network sync) and whenever the network is
- * unavailable for a fresh install. `repeaters.json` is a dated HearHam snapshot produced
- * by [HearhamRepeaterMapper]; the other files are illustrative mock data.
+ * unavailable for a fresh install. `repeaters.json` and `talkgroups.json` are dated
+ * snapshots made by [HearhamRepeaterMapper] and [BrandmeisterTalkgroupMapper]; `bands.json`
+ * and `digital_modes.json` are taken from the IARU band plans and each mode's official
+ * documentation.
  */
 class AssetDataSource(private val context: Context) {
     private val json = Json { ignoreUnknownKeys = true; isLenient = true }

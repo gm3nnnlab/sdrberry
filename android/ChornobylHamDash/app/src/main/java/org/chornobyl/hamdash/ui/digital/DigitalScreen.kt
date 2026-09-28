@@ -34,6 +34,14 @@ fun DigitalScreen(viewModel: DigitalViewModel) {
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
+            item {
+                Text(
+                    "Facts are taken from each mode's official specification or documentation, " +
+                        "linked as the source on each entry.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
             items(s.data, key = { it.id }) { mode ->
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.padding(12.dp)) {
@@ -43,7 +51,7 @@ fun DigitalScreen(viewModel: DigitalViewModel) {
                         Text("Use cases: ${mode.useCases}", style = MaterialTheme.typography.bodyMedium)
                         Text("Equipment: ${mode.equipmentNeeded}", style = MaterialTheme.typography.bodyMedium)
                         Text(
-                            mode.docUrl,
+                            "Source: ${mode.docUrl}",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.tertiary,
                         )
