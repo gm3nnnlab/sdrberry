@@ -1,0 +1,8 @@
+[
+  {"id": "tg-9", "tgId": 9, "name": "Local", "description": "Local repeater-only traffic, not routed to the wide-area network.", "source": "Mock Local Dataset (illustrative)"},
+  {"id": "tg-91", "tgId": 91, "name": "Worldwide", "description": "General worldwide chat talkgroup, low-duty-cycle courtesy expected.", "source": "Mock Local Dataset (illustrative)"},
+  {"id": "tg-93", "tgId": 93, "name": "Ukraine Nationwide", "description": "National Ukrainian amateur DMR talkgroup.", "source": "Mock Local Dataset (illustrative)"},
+  {"id": "tg-9302", "tgId": 9302, "name": "Kyiv Region", "description": "Regional talkgroup for Kyiv oblast amateur stations.", "source": "Mock Local Dataset (illustrative)"},
+  {"id": "tg-9307", "tgId": 9307, "name": "Chernihiv Region", "description": "Regional talkgroup for Chernihiv oblast amateur stations.", "source": "Mock Local Dataset (illustrative)"},
+  {"id": "tg-3100", "tgId": 3100, "name": "Europe", "description": "Pan-European continental talkgroup.", "source": "Mock Local Dataset (illustrative)"}
+]
