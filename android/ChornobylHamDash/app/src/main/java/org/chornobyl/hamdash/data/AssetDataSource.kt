@@ -4,7 +4,6 @@ import android.content.Context
 import kotlinx.serialization.json.Json
 import org.chornobyl.hamdash.data.model.BandDto
 import org.chornobyl.hamdash.data.model.DigitalModeDto
-import org.chornobyl.hamdash.data.model.PropagationDto
 import org.chornobyl.hamdash.data.model.RepeaterDto
 import org.chornobyl.hamdash.data.model.TalkgroupDto
 
@@ -32,7 +31,4 @@ class AssetDataSource(private val context: Context) {
 
     fun loadTalkgroups(): List<TalkgroupDto> =
         json.decodeFromString(readAsset("talkgroups.json"))
-
-    fun loadPropagation(): PropagationDto =
-        json.decodeFromString(readAsset("propagation.json"))
 }

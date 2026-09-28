@@ -27,11 +27,17 @@ object NetworkModule {
     }
 
     val radioApiService: RadioApiService by lazy {
+        retrofit(BuildConfig.MOCK_API_BASE_URL).create(RadioApiService::class.java)
+    }
+
+    val swpcApiService: SwpcApiService by lazy {
+        retrofit(BuildConfig.SWPC_BASE_URL).create(SwpcApiService::class.java)
+    }
+
+    private fun retrofit(baseUrl: String): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BuildConfig.MOCK_API_BASE_URL)
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
-            .create(RadioApiService::class.java)
-    }
 }

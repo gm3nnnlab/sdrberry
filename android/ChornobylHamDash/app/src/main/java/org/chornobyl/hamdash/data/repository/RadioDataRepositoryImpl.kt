@@ -51,7 +51,6 @@ class RadioDataRepositoryImpl(
         if (local.talkgroupCount() == 0) {
             local.replaceTalkgroups(assets.loadTalkgroups().map { it.toEntity() })
         }
-        local.replacePropagation(assets.loadPropagation().toEntity())
     }
 
     /**

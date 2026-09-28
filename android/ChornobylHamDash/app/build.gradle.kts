@@ -21,6 +21,8 @@ android {
         // Placeholder mock base URL. RemoteDataSource is wired against this and can be
         // swapped for a real amateur-radio data API later without touching call sites.
         buildConfigField("String", "MOCK_API_BASE_URL", "\"https://mock.chornobyl-hamdash.invalid/\"")
+        // Live propagation data: NOAA Space Weather Prediction Center (public domain).
+        buildConfigField("String", "SWPC_BASE_URL", "\"https://services.swpc.noaa.gov/\"")
     }
 
     buildFeatures {
@@ -90,4 +92,6 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.osmdroid.android)
     implementation(libs.material)
+
+    testImplementation(libs.junit)
 }

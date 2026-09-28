@@ -39,10 +39,17 @@ fun AboutScreen() {
 
         Text("DATA SOURCES", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
         Text(
-            "This MVP ships with a bundled, illustrative mock dataset (\"Mock Local Dataset\") " +
-                "seeded from local JSON assets — not a live feed. The app is wired to fetch from " +
-                "a remote data source through RadioDataRepository, so a real, attributed public " +
-                "amateur-radio data provider can be plugged in later without changing the UI.",
+            "Repeaters, bands, digital modes and talkgroups: a bundled, illustrative mock " +
+                "dataset (\"Mock Local Dataset\") seeded from local JSON assets — not a live feed. " +
+                "The app is wired to fetch them from a remote source through RadioDataRepository, " +
+                "so a real, attributed public amateur-radio data provider can be plugged in later.",
+            style = MaterialTheme.typography.bodyMedium,
+        )
+        Text(
+            "Propagation: live data from the NOAA Space Weather Prediction Center " +
+                "(services.swpc.noaa.gov, public domain) — 10.7 cm solar flux, planetary Kp and " +
+                "daily Ap, and GOES X-ray flares. Fetched only by auto-sync; no location or " +
+                "personal data is sent.",
             style = MaterialTheme.typography.bodyMedium,
         )
         Text("Map tiles: OpenStreetMap contributors (via osmdroid).", style = MaterialTheme.typography.bodyMedium)
