@@ -8,14 +8,12 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.chornobyl.hamdash.data.model.DigitalModeDto
 import org.chornobyl.hamdash.data.model.HearhamRepeaterDto
 import org.chornobyl.hamdash.data.model.PropagationDto
 import org.chornobyl.hamdash.data.model.RepeaterDto
 import org.chornobyl.hamdash.data.model.TalkgroupDto
 import org.chornobyl.hamdash.network.BrandmeisterApiService
 import org.chornobyl.hamdash.network.HearhamApiService
-import org.chornobyl.hamdash.network.RadioApiService
 import org.chornobyl.hamdash.network.SwpcApiService
 import java.time.Instant
 import java.time.LocalDate
@@ -24,13 +22,11 @@ import java.time.ZoneOffset
 /**
  * Thin, failure-tolerant wrapper around the network APIs. Every call returns a
  * [Result] so the repository can fall back to local data without special-casing
- * network exceptions itself. The MVP's mock base URL never resolves, so the
- * [RadioApiService] calls are expected to fail today — that failure path is
- * intentional and exercised. Repeaters come live from HearHam, talkgroups from
- * BrandMeister and propagation from NOAA SWPC.
+ * network exceptions itself. Repeaters come live from HearHam, talkgroups from
+ * BrandMeister and propagation from NOAA SWPC; bands and digital modes have no
+ * remote source and are bundled with the app.
  */
 class RemoteDataSource(
-    private val api: RadioApiService,
     private val swpc: SwpcApiService,
     private val hearham: HearhamApiService,
     private val brandmeister: BrandmeisterApiService,
@@ -47,7 +43,6 @@ class RemoteDataSource(
         HearhamRepeaterMapper.map(entries, LocalDate.now(ZoneOffset.UTC))
     }
 
-    suspend fun fetchDigitalModes(): Result<List<DigitalModeDto>> = fetch { api.getDigitalModes() }
     suspend fun fetchTalkgroups(): Result<List<TalkgroupDto>> =
         fetch { BrandmeisterTalkgroupMapper.map(brandmeister.getTalkgroups()) }
 

@@ -26,10 +26,6 @@ object NetworkModule {
             .build()
     }
 
-    val radioApiService: RadioApiService by lazy {
-        retrofit(BuildConfig.MOCK_API_BASE_URL).create(RadioApiService::class.java)
-    }
-
     val swpcApiService: SwpcApiService by lazy {
         retrofit(BuildConfig.SWPC_BASE_URL).create(SwpcApiService::class.java)
     }

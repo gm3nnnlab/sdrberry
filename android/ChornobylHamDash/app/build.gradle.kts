@@ -18,9 +18,6 @@ android {
         versionName = "0.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        // Placeholder mock base URL. RemoteDataSource is wired against this and can be
-        // swapped for a real amateur-radio data API later without touching call sites.
-        buildConfigField("String", "MOCK_API_BASE_URL", "\"https://mock.chornobyl-hamdash.invalid/\"")
         // Live propagation data: NOAA Space Weather Prediction Center (public domain).
         buildConfigField("String", "SWPC_BASE_URL", "\"https://services.swpc.noaa.gov/\"")
         // Live repeater list: HearHam.live, which permits use in apps.

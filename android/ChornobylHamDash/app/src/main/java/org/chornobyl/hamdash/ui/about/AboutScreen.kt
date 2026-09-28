@@ -61,8 +61,9 @@ fun AboutScreen() {
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            "Digital modes: a bundled, illustrative mock dataset " +
-                "(\"Mock Local Dataset\") seeded from local JSON assets — not a live feed.",
+            "Digital modes: facts taken from each mode's official specification or " +
+                "documentation — ETSI TS 102 361 (DMR), JARL (D-STAR), Yaesu (System Fusion), " +
+                "the APRS specification, WSJT-X (FT8) and JS8Call — linked on each entry.",
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(

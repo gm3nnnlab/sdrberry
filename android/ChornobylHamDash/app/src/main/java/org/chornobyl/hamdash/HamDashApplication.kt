@@ -15,9 +15,8 @@ class HamDashApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         container = AppContainer(this)
-        // Seed local storage from the bundled mock dataset on first run, then hand over
-        // to the auto-sync schedule. Refreshes fail gracefully against the placeholder
-        // mock URL and simply leave the seeded/local data in place.
+        // Seed local storage from the bundled data, then hand over to the auto-sync
+        // schedule. A failed refresh leaves the seeded/local data in place.
         applicationScope.launch {
             container.radioDataRepository.ensureSeeded()
             container.syncScheduler.run()

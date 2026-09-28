@@ -21,7 +21,6 @@ class AppContainer(context: Context) {
     private val database = HamDashDatabase.getInstance(context)
     private val localDataSource = LocalDataSource(database)
     private val remoteDataSource = RemoteDataSource(
-        NetworkModule.radioApiService,
         NetworkModule.swpcApiService,
         NetworkModule.hearhamApiService,
         NetworkModule.brandmeisterApiService,

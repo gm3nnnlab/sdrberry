@@ -3,9 +3,8 @@ package org.chornobyl.hamdash.data.model
 import kotlinx.serialization.Serializable
 
 /**
- * Wire-format DTOs. These mirror the bundled mock JSON assets today and are the
- * exact shape [org.chornobyl.hamdash.network.RadioApiService] expects from a real
- * backend in the future — nothing else in the app needs to change to swap sources.
+ * The app's source-independent data shapes, also used for the bundled JSON assets.
+ * Each remote source is converted into these by its own mapper.
  */
 @Serializable
 data class RepeaterDto(

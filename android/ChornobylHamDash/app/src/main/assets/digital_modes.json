@@ -1,9 +1,56 @@
 [
-  {"id": "dmr", "name": "DMR", "description": "Digital Mobile Radio, a TDMA digital voice standard adapted from commercial/business radio for amateur use.", "howItWorks": "Splits one 12.5 kHz channel into two time slots (TDMA), each carrying independent voice traffic identified by a color code and talkgroup.", "useCases": "Wide-area repeater networks (BrandMeister, DMR+), local and international talkgroups.", "equipmentNeeded": "DMR-capable radio (e.g. Anytone, Motorola, Retevis) and a registered DMR ID.", "docUrl": "https://www.dmr-marc.net"},
-  {"id": "dstar", "name": "D-STAR", "description": "Digital Smart Technologies for Amateur Radio, one of the first widely deployed amateur digital voice protocols.", "howItWorks": "Uses AMBE vocoder over a low-rate digital stream; supports routing to reflectors identified by callsign-based addressing.", "useCases": "Cross-continent linking via reflectors, GPS/text data alongside voice.", "equipmentNeeded": "D-STAR radio (Icom, Kenwood) and a registered D-STAR callsign/ID.", "docUrl": "https://www.icomamerica.com/en/amateur/dstar/dstar.aspx"},
-  {"id": "c4fm", "name": "C4FM / System Fusion", "description": "Yaesu's digital voice/data system, often run alongside analog FM on the same repeater (Fusion).", "howItWorks": "4-level FSK modulation carrying digital voice (or mixed digital/data, DN mode) with automatic mode select on some repeaters.", "useCases": "WIRES-X linking, mixed analog/digital repeater communities.", "equipmentNeeded": "Yaesu System Fusion radio (e.g. FT-70D, FTM-400).", "docUrl": "https://www.yaesu.com/indexVS.cfm?cmd=DisplayProducts&ProdCatID=102"},
-  {"id": "aprs", "name": "APRS", "description": "Automatic Packet Reporting System, a packet-radio data network for position, weather, and short-message beacons.", "howItWorks": "AX.25 packet bursts sent over VHF (commonly 144.800 MHz in Europe), relayed by digipeaters and gated to the internet (APRS-IS).", "useCases": "Station tracking, weather telemetry, short messaging, event support.", "equipmentNeeded": "TNC or radio with built-in APRS modem (e.g. Kenwood TH-D74) or software modem + sound-card interface.", "docUrl": "http://www.aprs.org"},
-  {"id": "ft8", "name": "FT8", "description": "A weak-signal digital mode designed for making quick, reliable HF contacts under poor conditions.", "howItWorks": "8-FSK tones in a 15-second time-synchronized cycle, decoded well below the noise floor using strong forward error correction.", "useCases": "DXing, contesting, weak-signal HF contacts with minimal power.", "equipmentNeeded": "HF radio + computer/soundcard running WSJT-X or similar, accurate clock sync.", "docUrl": "https://wsjt.sourceforge.io/wsjtx.html"},
-  {"id": "js8call", "name": "JS8Call", "description": "A keyboard-to-keyboard messaging mode built on FT8's modulation, aimed at conversational and store-and-forward use.", "howItWorks": "Uses the FT8 waveform but adds free-text messaging, relay, and store-and-forward heartbeat networking.", "useCases": "Off-grid/emergency communications, free-text HF chat, message relay.", "equipmentNeeded": "HF radio + computer running JS8Call software.", "docUrl": "http://js8call.com"},
-  {"id": "winlink", "name": "Winlink", "description": "A global radio email system used heavily in emergency and maritime communications.", "howItWorks": "Uses HF/VHF packet or Pactor/Vara modems to exchange standard email through gateway stations, with store-and-forward routing.", "useCases": "Emergency communications, maritime email, off-grid messaging.", "equipmentNeeded": "Radio + TNC/soundcard modem (Vara, Pactor) + Winlink Express software.", "docUrl": "https://winlink.org"}
+  {
+    "id": "dmr",
+    "name": "DMR",
+    "description": "Digital Mobile Radio, the ETSI standard (TS 102 361) for digital voice and data radio, used on amateur repeaters and linked networks.",
+    "howItWorks": "Two-slot TDMA on a 12.5 kHz carrier: two independent channels (timeslots 1 and 2) share one frequency. 4FSK modulation at 4,800 symbols/s, 2 bits per symbol. A 4-bit colour code (CC 0–15) tells overlapping sites apart.",
+    "useCases": "Voice and data through repeaters, organised by timeslot and talkgroup; wide-area linking between repeaters.",
+    "equipmentNeeded": "A DMR radio programmed with the repeater's frequencies, colour code, timeslot and talkgroup.",
+    "docUrl": "https://www.etsi.org/deliver/etsi_ts/102300_102399/10236101/02.07.01_60/ts_10236101v020701p.pdf"
+  },
+  {
+    "id": "dstar",
+    "name": "D-STAR",
+    "description": "The digital voice and data system specified by JARL, the Japan Amateur Radio League.",
+    "howItWorks": "Voice: AMBE codec at 2.4 kbps (3.6 kbps with error correction) in a stream of up to 4.8 kbps, occupying up to 6 kHz, on channels at least 6.25 kHz apart; GMSK modulation. Data: up to 128 kbps in up to 150 kHz, simplex.",
+    "useCases": "Digital voice through repeaters with data alongside; high-speed data; repeater-to-repeater links on 5.6 GHz and higher bands.",
+    "equipmentNeeded": "A D-STAR radio.",
+    "docUrl": "https://www.jarl.com/d-star/shogen.htm"
+  },
+  {
+    "id": "c4fm",
+    "name": "C4FM / System Fusion",
+    "description": "Yaesu's C4FM digital voice and data system, known as System Fusion.",
+    "howItWorks": "C4FM digital modulation. System Fusion repeaters such as Yaesu's DR-2X handle both C4FM digital and analog FM on the same repeater.",
+    "useCases": "Digital voice on System Fusion repeaters; internet linking through Yaesu WIRES-X.",
+    "equipmentNeeded": "A Yaesu System Fusion (C4FM) radio.",
+    "docUrl": "https://www.yaesu.com/"
+  },
+  {
+    "id": "aprs",
+    "name": "APRS",
+    "description": "Automatic Packet Reporting System. In the words of its creator, WB4APR, a two-way tactical real-time digital communications system for sharing information about the local area — not a vehicle tracking system.",
+    "howItWorks": "Stations send AX.25 UI frames that generic digipeaters repeat, and the APRS-IS internet backbone links worldwide. The IARU Region 1 band plans use 144.800 MHz, and 432.500 MHz on 70 cm.",
+    "useCases": "Positions, objects, weather reports, messages and bulletins shared with everyone in the area.",
+    "equipmentNeeded": "A radio with a built-in APRS modem, or a radio with a TNC or software modem.",
+    "docUrl": "https://github.com/wb2osz/aprsspec"
+  },
+  {
+    "id": "ft8",
+    "name": "FT8",
+    "description": "A weak-signal digital mode in the WSJT-X software.",
+    "howItWorks": "8-GFSK at 6.25 baud in a 50 Hz-wide signal. Each 12.6 s transmission carries a 77-bit message protected by an LDPC (174,91) code, sent in time-synchronised transmit and receive periods.",
+    "useCases": "Short, structured contacts under very weak conditions: WSJT-X quotes a decode threshold of about −21 dB S/N.",
+    "equipmentNeeded": "An SSB transceiver connected to a computer running WSJT-X.",
+    "docUrl": "https://wsjt.sourceforge.io/wsjtx.html"
+  },
+  {
+    "id": "js8call",
+    "name": "JS8Call",
+    "description": "Keyboard-to-keyboard HF messaging using the weak-signal JS8 protocol, built on the WSJT-X / FT8 engine. Now maintained as JS8Call-Improved.",
+    "howItWorks": "JS8 transmissions, decodable down to about −24 dB SNR, carry real-time chat, directed and relayed messages (including store-and-forward), heartbeats and automatic acknowledgements.",
+    "useCases": "Emergency and grid-down communications, preparedness and regional nets, and everyday HF messaging.",
+    "equipmentNeeded": "An HF transceiver connected to a computer running JS8Call.",
+    "docUrl": "https://js8call.com/"
+  }
 ]

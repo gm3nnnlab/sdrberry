@@ -11,8 +11,6 @@ data class SyncMetadataEntity(
 
 object SyncKeys {
     const val REPEATERS = "repeaters"
-    const val BANDS = "bands"
-    const val DIGITAL_MODES = "digital_modes"
     const val TALKGROUPS = "talkgroups"
     const val PROPAGATION = "propagation"
 }
