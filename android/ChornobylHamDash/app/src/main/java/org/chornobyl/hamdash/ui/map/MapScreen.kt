@@ -1,7 +1,6 @@
 package org.chornobyl.hamdash.ui.map
 
 import android.content.Context
-import android.preference.PreferenceManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -55,7 +54,7 @@ fun MapScreen(viewModel: MapViewModel) {
     LaunchedEffect(Unit) {
         Configuration.getInstance().load(
             context,
-            PreferenceManager.getDefaultSharedPreferences(context),
+            context.getSharedPreferences("osmdroid", Context.MODE_PRIVATE),
         )
         Configuration.getInstance().userAgentValue = context.packageName
         if (viewModel.hasLocationPermission()) viewModel.refreshMyLocation()

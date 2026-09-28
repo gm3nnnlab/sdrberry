@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
@@ -42,7 +42,7 @@ fun SettingsScreen(viewModel: SettingsViewModel) {
         SettingRow("Show GPS on dashboard") {
             Switch(checked = settings.showGpsOnDashboard, onCheckedChange = viewModel::setShowGpsOnDashboard)
         }
-        Divider()
+        HorizontalDivider()
 
         Text("Distance units", style = MaterialTheme.typography.titleMedium)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -52,7 +52,7 @@ fun SettingsScreen(viewModel: SettingsViewModel) {
                 }
             }
         }
-        Divider()
+        HorizontalDivider()
 
         Text("Theme", style = MaterialTheme.typography.titleMedium)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -62,7 +62,7 @@ fun SettingsScreen(viewModel: SettingsViewModel) {
                 }
             }
         }
-        Divider()
+        HorizontalDivider()
 
         SettingRow("Auto-sync") {
             Switch(checked = settings.autoSyncEnabled, onCheckedChange = viewModel::setAutoSync)
@@ -77,7 +77,7 @@ fun SettingsScreen(viewModel: SettingsViewModel) {
         SettingRow("Use mobile data for sync") {
             Switch(checked = settings.useMobileData, onCheckedChange = viewModel::setUseMobileData)
         }
-        Divider()
+        HorizontalDivider()
 
         Button(onClick = viewModel::clearCache, modifier = Modifier.fillMaxWidth()) {
             Text("Clear cache")
