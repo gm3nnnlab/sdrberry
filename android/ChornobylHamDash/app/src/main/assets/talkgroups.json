@@ -1,8 +1,247 @@
 [
-  {"id": "tg-9", "tgId": 9, "name": "Local", "description": "Local repeater-only traffic, not routed to the wide-area network.", "source": "Mock Local Dataset (illustrative)"},
-  {"id": "tg-91", "tgId": 91, "name": "Worldwide", "description": "General worldwide chat talkgroup, low-duty-cycle courtesy expected.", "source": "Mock Local Dataset (illustrative)"},
-  {"id": "tg-93", "tgId": 93, "name": "Ukraine Nationwide", "description": "National Ukrainian amateur DMR talkgroup.", "source": "Mock Local Dataset (illustrative)"},
-  {"id": "tg-9302", "tgId": 9302, "name": "Kyiv Region", "description": "Regional talkgroup for Kyiv oblast amateur stations.", "source": "Mock Local Dataset (illustrative)"},
-  {"id": "tg-9307", "tgId": 9307, "name": "Chernihiv Region", "description": "Regional talkgroup for Chernihiv oblast amateur stations.", "source": "Mock Local Dataset (illustrative)"},
-  {"id": "tg-3100", "tgId": 3100, "name": "Europe", "description": "Pan-European continental talkgroup.", "source": "Mock Local Dataset (illustrative)"}
+    {
+        "id": "bm-9",
+        "tgId": 9,
+        "name": "Local",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-91",
+        "tgId": 91,
+        "name": "World-wide",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-92",
+        "tgId": 92,
+        "name": "Europe",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-255",
+        "tgId": 255,
+        "name": "Ukraine",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-2555",
+        "tgId": 2555,
+        "name": "Ukraine bridge DMR D-STAR YSF",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-2559",
+        "tgId": 2559,
+        "name": "Emergency Ukraine",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25501",
+        "tgId": 25501,
+        "name": "Kyiv city",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25502",
+        "tgId": 25502,
+        "name": "Vinnyts`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25503",
+        "tgId": 25503,
+        "name": "Volyns`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25504",
+        "tgId": 25504,
+        "name": "Dnirpo obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25505",
+        "tgId": 25505,
+        "name": "Donets`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25506",
+        "tgId": 25506,
+        "name": "Zhytomyrs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25507",
+        "tgId": 25507,
+        "name": "Zakarpats`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25508",
+        "tgId": 25508,
+        "name": "Zaporiz`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25509",
+        "tgId": 25509,
+        "name": "Ivano frankivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25510",
+        "tgId": 25510,
+        "name": "Kyivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25511",
+        "tgId": 25511,
+        "name": "OdesaRadioLink",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25512",
+        "tgId": 25512,
+        "name": "Kropyvnyts`kyj obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25513",
+        "tgId": 25513,
+        "name": "Radio Scouts URS",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25514",
+        "tgId": 25514,
+        "name": "Lvivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25515",
+        "tgId": 25515,
+        "name": "Mykolaivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25516",
+        "tgId": 25516,
+        "name": "Odes`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25517",
+        "tgId": 25517,
+        "name": "Poltavs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25518",
+        "tgId": 25518,
+        "name": "Rivnens`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25519",
+        "tgId": 25519,
+        "name": "Sums`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25520",
+        "tgId": 25520,
+        "name": "Ternopils`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25521",
+        "tgId": 25521,
+        "name": "Kharkivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25522",
+        "tgId": 25522,
+        "name": "Khersons`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25523",
+        "tgId": 25523,
+        "name": "Khmel`nyts`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25524",
+        "tgId": 25524,
+        "name": "Cherkas`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25525",
+        "tgId": 25525,
+        "name": "Chernigivs`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25526",
+        "tgId": 25526,
+        "name": "Chernivets`ka obl",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25527",
+        "tgId": 25527,
+        "name": "Sevastopol",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25577",
+        "tgId": 25577,
+        "name": "UA Azimuth",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    },
+    {
+        "id": "bm-25599",
+        "tgId": 25599,
+        "name": "Emergency Zakarpattia",
+        "description": "",
+        "source": "BrandMeister talkgroup list (api.brandmeister.network)"
+    }
 ]

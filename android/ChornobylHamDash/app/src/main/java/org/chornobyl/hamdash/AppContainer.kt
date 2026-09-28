@@ -24,6 +24,7 @@ class AppContainer(context: Context) {
         NetworkModule.radioApiService,
         NetworkModule.swpcApiService,
         NetworkModule.hearhamApiService,
+        NetworkModule.brandmeisterApiService,
         NetworkModule.json,
     )
     private val assetDataSource = AssetDataSource(context)
