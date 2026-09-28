@@ -31,20 +31,21 @@ class RadioDataRepositoryImpl(
     override fun observeLastSync(): Flow<Long?> =
         combine(
             local.observeSync(SyncKeys.REPEATERS),
-            local.observeSync(SyncKeys.BANDS),
             local.observeSync(SyncKeys.DIGITAL_MODES),
             local.observeSync(SyncKeys.TALKGROUPS),
             local.observeSync(SyncKeys.PROPAGATION),
         ) { rows -> rows.mapNotNull { it?.lastSyncEpochMillis }.maxOrNull() }
 
-    /** First-run bootstrap: if Room is empty, seed it from the bundled mock JSON. */
+    /**
+     * Seeds empty tables from the bundled JSON. Bands have no remote source (they come
+     * from the IARU Region 1 band plans shipped with the app), so they are reloaded on
+     * every start; that way an app update also replaces band data stored by older builds.
+     */
     override suspend fun ensureSeeded() {
         if (local.repeaterCount() == 0) {
             local.replaceRepeaters(assets.loadRepeaters().map { it.toEntity() })
         }
-        if (local.bandCount() == 0) {
-            local.replaceBands(assets.loadBands().map { it.toEntity() })
-        }
+        local.replaceBands(assets.loadBands().map { it.toEntity() })
         if (local.digitalModeCount() == 0) {
             local.replaceDigitalModes(assets.loadDigitalModes().map { it.toEntity() })
         }
@@ -74,13 +75,6 @@ class RadioDataRepositoryImpl(
                 // Recorded even when nothing nearby survived filtering, so the full
                 // worldwide list is not downloaded again until the next interval.
                 local.markSynced(SyncKeys.REPEATERS, now)
-            }
-        }
-        remote.fetchBands().onSuccess { dtos ->
-            if (dtos.isNotEmpty()) {
-                local.replaceBands(dtos.map { it.toEntity() })
-                local.markSynced(SyncKeys.BANDS, now)
-                anySucceeded = true
             }
         }
         remote.fetchDigitalModes().onSuccess { dtos ->

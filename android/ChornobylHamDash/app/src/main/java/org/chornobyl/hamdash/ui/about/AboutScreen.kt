@@ -55,7 +55,13 @@ fun AboutScreen() {
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            "Bands and digital modes: a bundled, illustrative mock dataset " +
+            "Bands: the IARU Region 1 HF, VHF and UHF band plans (iaru-r1.org), bundled with " +
+                "the app — band plans are published as documents, not a live feed. A band plan " +
+                "is not a licence; check your licence and the national frequency allocation.",
+            style = MaterialTheme.typography.bodyMedium,
+        )
+        Text(
+            "Digital modes: a bundled, illustrative mock dataset " +
                 "(\"Mock Local Dataset\") seeded from local JSON assets — not a live feed.",
             style = MaterialTheme.typography.bodyMedium,
         )
