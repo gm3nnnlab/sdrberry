@@ -26,17 +26,20 @@ fun PropagationScreen(viewModel: PropagationViewModel) {
             style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.primary,
         )
-        propagation?.source?.let {
-            Text(it, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
+        val source = propagation?.source
+        Text(
+            source ?: "Not synced yet. Data comes from NOAA SWPC and needs internet with auto-sync on.",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
 
-        DashCard(title = "SOLAR FLUX INDEX") {
+        DashCard(title = "SOLAR FLUX INDEX (10.7 cm)") {
             Text(propagation?.solarFluxIndex?.toString() ?: "NO DATA", style = MaterialTheme.typography.displayLarge)
         }
-        DashCard(title = "K-INDEX") {
+        DashCard(title = "K-INDEX (PLANETARY Kp)") {
             Text(propagation?.kIndex?.toString() ?: "NO DATA", style = MaterialTheme.typography.headlineMedium)
         }
-        DashCard(title = "A-INDEX") {
+        DashCard(title = "A-INDEX (Ap, LAST FULL UTC DAY)") {
             Text(propagation?.aIndex?.toString() ?: "NO DATA", style = MaterialTheme.typography.headlineMedium)
         }
         DashCard(title = "SOLAR FLARES") {
