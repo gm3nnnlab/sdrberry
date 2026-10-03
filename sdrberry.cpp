@@ -61,7 +61,7 @@
 
 const int major_version = 2;
 const int minor_version = 9;
-const int patch_version = 1;
+const int patch_version = 2;
 
 std::string version_string = strlib::sprintf("%d.%d.%d", major_version, minor_version, patch_version);
 
@@ -1349,7 +1349,7 @@ void destroy_demodulators(bool all, bool close_stream)
 	{
 		RX_Stream::destroy_rx_streaming_thread();
 		stream_rx_on = false;
-		RX_Stream::pause_rx_stream(false);
+		RX_Stream::pause_rx_stream(default_radio, false);
 	}
 	TX_Stream::destroy_tx_streaming_thread(close_stream);
 	stream_tx_on = false;
@@ -1448,7 +1448,7 @@ void select_mode(int s_mode, bool bvfo, int channel)
 			stream_rx_on = true;
 		}
 		else
-			RX_Stream::pause_rx_stream(false);
+			RX_Stream::pause_rx_stream(default_radio, false);
 		break;
 
 	case mode_broadband_fm:
@@ -1464,7 +1464,7 @@ void select_mode(int s_mode, bool bvfo, int channel)
 			stream_rx_on = true;
 		}
 		else
-			RX_Stream::pause_rx_stream(false);
+			RX_Stream::pause_rx_stream(default_radio, false);
 		break;
 
 	case mode_cw:
@@ -1486,7 +1486,7 @@ void select_mode(int s_mode, bool bvfo, int channel)
 			stream_rx_on = true;
 		}
 		else
-			RX_Stream::pause_rx_stream(false);
+			RX_Stream::pause_rx_stream(default_radio, false);
 		break;
 	case mode_ft8:
 	case mode_ft4:
@@ -1551,7 +1551,7 @@ bool select_mode_tx(int s_mode, audioTone tone, int cattx, int channel, std::str
 		if (!duplex)
 		{
 			destroy_demodulators(false, false);
-			RX_Stream::pause_rx_stream(true);
+			RX_Stream::pause_rx_stream(default_radio, true);
 		}
 	}
 	mode = s_mode;
